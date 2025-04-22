@@ -1,15 +1,15 @@
 import sql from 'mssql';
+console.log('DB_SERVER:', process.env.DB_SERVER);
 
 const dbConfig = {
-    server: 'dn-gurumoorthy',
-    user: 'sa',
-    password: 'gps@123',
-    database: 'Employee',
-    options: {
-        trustedConnection: true,
-        trustServerCertificate: true, 
-    },
-  };
+  server: process.env.DB_SERVER ?? '',
+  user: process.env.DB_USER ?? '',
+  password: process.env.DB_PASSWORD ?? '',
+  database: process.env.DB_NAME ?? '',
+  options: {
+    trustServerCertificate: true,
+  }
+};
 
 export async function getConnection() {
   try {
